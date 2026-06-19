@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador Web de Tareas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="encabezado">
+        <nav class="navbar" aria-label="Menú principal">
+            <a class="marca" href="#inicio">Organizador Web</a>
+            <button id="btnMenu" class="btn-menu" type="button" aria-label="Abrir menú">☰</button>
+            <ul id="menuPrincipal" class="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tareas">Tareas</a></li>
+                <li><a href="#almacenamiento">LocalStorage</a></li>
+                <li><a href="#ayuda">Ayuda</a></li>
+            </ul>
+            <button id="btnTema" class="btn-secundario" type="button">Cambiar tema</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="seccion hero">
+            <div class="hero-contenido">
+                <p class="badge">Proyecto Final - Fase 2</p>
+                <h1>Lista de tareas personal</h1>
+                <p>Aplicación web para registrar, organizar y controlar tareas pendientes. El proyecto usa HTML, CSS, JavaScript y almacenamiento local del navegador.</p>
+                <div class="acciones-hero">
+                    <a class="btn-principal" href="#tareas">Registrar tarea</a>
+                    <button id="btnMensaje" class="btn-secundario" type="button">Mostrar consejo</button>
+                </div>
+                <p id="mensajeInicio" class="mensaje oculto">Consejo: registrá primero las tareas urgentes y revisá el resumen antes de cerrar la página.</p>
+            </div>
+
+            <article class="tarjeta-resumen" aria-label="Resumen de tareas">
+                <h2>Resumen</h2>
+                <p>Total de tareas: <strong id="totalTareas">0</strong></p>
+                <p>Completadas: <strong id="tareasCompletadas">0</strong></p>
+                <p>Pendientes: <strong id="tareasPendientes">0</strong></p>
+            </article>
+        </section>
+
+        <section id="tareas" class="seccion grid-tareas">
+            <article class="tarjeta">
+                <h2>Registrar tarea</h2>
+                <form id="formTarea" novalidate>
+                    <label for="titulo">Título de la tarea</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ej.: Estudiar JavaScript">
+
+                    <label for="fecha">Fecha límite</label>
+                    <input type="date" id="fecha" name="fecha">
+
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad" name="prioridad">
+                        <option value="">Seleccione una prioridad</option>
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Media</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+
+                    <p id="errorFormulario" class="error" aria-live="polite"></p>
+                    <button class="btn-principal" type="submit">Agregar tarea</button>
+                </form>
+            </article>
+
+            <article class="tarjeta">
+                <div class="cabecera-lista">
+                    <h2>Tareas registradas</h2>
+                    <button id="btnLimpiar" class="btn-peligro" type="button">Limpiar todo</button>
+                </div>
+
+                <div class="filtros" aria-label="Filtros de tareas">
+                    <button class="btn-filtro activo" data-filtro="todas" type="button">Todas</button>
+                    <button class="btn-filtro" data-filtro="pendientes" type="button">Pendientes</button>
+                    <button class="btn-filtro" data-filtro="completadas" type="button">Completadas</button>
+                </div>
+
+                <ul id="listaTareas" class="lista-tareas"></ul>
+            </article>
+        </section>
+
+        <section id="almacenamiento" class="seccion tarjeta almacenamiento">
+            <div>
+                <h2>Demostración de localStorage</h2>
+                <p>Las tareas se guardan en el navegador con la clave <strong>tareasWebFase2</strong>. Al actualizar la página, la información permanece almacenada.</p>
+                <button id="btnVerStorage" class="btn-secundario" type="button">Mostrar datos guardados</button>
+            </div>
+            <pre id="datosStorage" class="datos-storage">Presioná el botón para ver el contenido guardado.</pre>
+        </section>
+
+        <section id="ayuda" class="seccion ayuda">
+            <h2>Ayuda del sistema</h2>
+            <button id="btnAyuda" class="btn-secundario" type="button">Mostrar/Ocultar ayuda</button>
+            <div id="panelAyuda" class="panel-ayuda oculto">
+                <p>Para usar la aplicación, completá el formulario, elegí una prioridad y presioná “Agregar tarea”. Luego podés marcar tareas como completadas, eliminarlas o filtrarlas.</p>
+                <p>Los datos se guardan en localStorage, por eso se mantienen aunque se actualice o cierre la página.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <p>Proyecto Final - Aplicaciones y Programación Web - Fase 2</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
